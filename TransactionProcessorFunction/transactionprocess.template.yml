@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: "2010-09-09" 
+Transform: "AWS::Serverless-2016-10-31" 
+Description: Function to create and send Transaction Process Requests
+Resources:
+  TRFunctions: 
+    Type: "AWS::Serverless::Function" 
+    Properties: 
+      Handler: "TransactionProcessorFunction::TransactionProcessorFunction.TRFunctions::Handler"
+      Runtime: dotnetcore2.1
+      CodeUri: "./" 
+      Description: Transaction Process Request
+      MemorySize: 2048 
+      Timeout: 900 
+      Role: "arn:aws:iam::061472114263:role/MyLambdaRole"
+      Environment:
+        Variables:
+          REGION: us-west-2
+  AWSLambdaBasicExecutionRole:
+    Type: AWS::IAM::Role 
+    Properties: 
+      AssumeRolePolicyDocument: 
+        Version: '2012-10-17' 
+        Statement: 
+        - Effect: Allow 
+          Principal: 
+            Service: 
+            - lambda.amazonaws.com 
+          Action: 
+          - sts:AssumeRole 
+      ManagedPolicyArns: 
+      - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole 
+      Policies: 
+      - PolicyName: CanAccessS3
+        PolicyDocument: 
+          Version: '2012-10-17' 
+          Statement: 
+          - Effect: Allow 
+            Action: 
+            - s3:Get*
+            - s3:Put*
+            - s3:Delete*
+            Resource:
+              - 'arn:aws:s3:::*/*' 
+              - 'arn:aws:s3:::*'       
+    
