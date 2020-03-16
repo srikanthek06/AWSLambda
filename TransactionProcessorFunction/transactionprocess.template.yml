@@ -7,7 +7,7 @@ Resources:
     Properties: 
       Handler: "TransactionProcessorFunction::TransactionProcessorFunction.TRFunctions::Handler"
       Runtime: dotnetcore2.1
-      CodeUri: "./TransactionProcessorFunction" 
+      CodeUri: "~/AWSLambda/TransactionProcessorFunction" 
       Description: Transaction Process Request
       MemorySize: 2048 
       Timeout: 900 
