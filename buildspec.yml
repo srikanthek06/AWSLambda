@@ -2,7 +2,7 @@ version: 0.1
 phases:
   install:
     commands:
-      - aws cloudformation package --template-file ./transactionprocessorfunction/transactionprocess.template.yml --s3-bucket transaction-process-lambda-pipeline  --output-template-file outputSamTemplate.yaml
+      - aws cloudformation package --template-file ./TransactionProcessorFunction/transactionprocess.template.yml --s3-bucket transaction-process-lambda-pipeline  --output-template-file outputSamTemplate.yaml
 artifacts:
   type: zip
   files:
