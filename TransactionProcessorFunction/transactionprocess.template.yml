@@ -11,7 +11,7 @@ Resources:
       Description: Transaction Process Request
       MemorySize: 2048 
       Timeout: 900 
-      Role: "arn:aws:iam::061472114263:role/transaction-processor-servicerole"
+      Role: "arn:aws:iam::061472114263:role/codebuild-tr-project-service-role"
       Environment:
         Variables:
           REGION: us-west-2
